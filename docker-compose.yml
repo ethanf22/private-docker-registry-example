@@ -1,0 +1,22 @@
+version: '3'
+services:
+  registry:
+    container_name: registry
+    restart: always
+    image: registry:2
+    ports:
+      - 5000:5000
+    environment:
+      standalone: 1
+      disable_token_auth: 1
+      REGISTRY_HTTP_TLS_CERTIFICATE: /certs/domain.crt
+      REGISTRY_HTTP_TLS_KEY: /certs/domain.key
+      REGISTRY_HTTP_SECRET: Go DAS
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Registry Authentication
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+    volumes:
+      - ./data:/var/lib/registry
+      - ./domain.crt:/certs/domain.crt
+      - ./domain.key:/certs/domain.key
+      - ./htpasswd:/auth/htpasswd
