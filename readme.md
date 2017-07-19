@@ -4,7 +4,7 @@ Tested on Ubuntu 16.04 and Apache 2.4
 
 ## Create htpasswd file
 For each user you'd like to authenticate, run the following command:
-`docker run --entrypoint htpasswd registry:2 -Bbn {user_name} {user_password} > /choose/path/to/htpasswd`
+`docker run --entrypoint htpasswd registry:2 -Bbn {user_name} {user_password} > /choose/path/to/htpasswd` 
 	* Replace `{user_name}` and `{user_password}` for each user you'd like to add.
 
 ## Configure Apache
